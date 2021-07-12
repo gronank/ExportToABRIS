@@ -8,7 +8,7 @@ import os
 import sys
 folderPath=os.getcwd()
 
-if(len(sys.argv)>2):
+if(len(sys.argv)>1):
 	folderPath=sys.argv[1].strip('"')
 databasePath=  os.path.join(folderPath, "Database\\")
 os.makedirs(databasePath,exist_ok=True)
