@@ -4,7 +4,14 @@ import serialize
 import uuid
 import pyclipper as pc
 import re
+import os
+import sys
+folderPath=os.getcwd()
 
+if(len(sys.argv)>2):
+	folderPath=sys.argv[1].strip('"')
+databasePath=  os.path.join(folderPath, "Database\\")
+os.makedirs(databasePath,exist_ok=True)
 def getSamName(unit):
 	description=unit['properties']['description']
 	fullName=description.split('Spotted: ')[1]
@@ -59,7 +66,6 @@ def getDangerZones(solutions):
 		zones.append(zone)
 	return zones
 
-databasePath=r"C:\Users\ander\source\Saved Games\DCS\ABRIS\Database/"
 url='http://rotorheads.ddns.net'
 dangerZoneUrl=url+'/mapdata/mapred.json'
 unitsUrl=url+'/mapdata/map.json'
@@ -98,6 +104,7 @@ for unit in units['features']:
 		"color":red,
 		}
 	referencePoints[uuid.uuid4()]=refPoint
+
 navigation={
 	"date":{"year":2016,
 		"day":22,

@@ -1,3 +1,4 @@
+# Borrowed from the dcs_liberation project
 def dumps(value, varname=None, indent=None):
     nl = "\n" if indent else ""
     s = varname + '=' + nl if varname else ''
