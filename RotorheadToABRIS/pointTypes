@@ -1,0 +1,60 @@
+["{3B8FC949-F755-4533-A300-4B0E5AC64F0C}"]=
+		{
+			["band"]=0,
+			["type"]=2,
+			["name"]="POINT",
+			["callsign"]="UUUU",
+			["class"]="ABRIS_Waypoint_Beacon",
+			["position"]=
+			{
+				["longitude"]=33.763826086772,
+				["latitude"]=35.155989350531,
+				["course"]=0,
+				["height"]=0,
+			},
+		},
+["{20AD284C-9506-4513-A50F-1FB3A2F32789}"]=
+		{
+			["type"]=0,
+			["name"]="US",
+			["callsign"]="US",
+			["class"]="ABRIS_Waypoint",
+			["position"]=
+			{
+				["longitude"]=33.810665406727,
+				["latitude"]=35.142146713648,
+				["course"]=0,
+				["height"]=0,
+			},
+			["sub_type"]=4,
+		},
+["{5AE4F46C-8807-4615-B8E7-11F5797BACF0}"]=
+		{
+			["type"]=0,
+			["name"]="R",
+			["callsign"]="R",
+			["class"]="ABRIS_Waypoint",
+			["position"]=
+			{
+				["longitude"]=33.781444700403,
+				["latitude"]=35.140888163457,
+				["course"]=0,
+				["height"]=0,
+			},
+			["sub_type"]=2,
+		},
+["{2D27CAD1-D781-45dc-B3A0-C48B61E67336}"]=
+		{
+			["type"]=4,
+			["name"]=" 2",
+			["callsign"]=" 2",
+			["class"]="ABRIS_Datalink_Point",
+			["position"]=
+			{
+				["longitude"]=42.057074449473,
+				["latitude"]=42.242808073051,
+				["course"]=-3.0742123126984,
+				["height"]=14.933443069458,
+			},
+			["sub_type"]=5,
+		},
