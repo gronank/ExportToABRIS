@@ -15,6 +15,7 @@ def save(name,varName,data):
 	with open(databasePath + name,'w') as file:
 		serialized = serialize.dumps(data,varname=varName,indent=0)
 		file.write(serialized)
+
 def getAbrisBase():
 	return {
 	"date":{
