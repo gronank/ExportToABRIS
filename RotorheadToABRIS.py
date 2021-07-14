@@ -1,6 +1,6 @@
 import re
 from serverreader import ServerReader
-from geometry import bufferZone, getPhaseLine, Color, NavPoint,Line
+from geometry import bufferZone, getPhaseLine, Color, NavPoint,Line,LineType
 from exportabris import AbrisAdditional, AbrisNavigation
 
 def getSamName(unit):
@@ -20,7 +20,7 @@ def getObjName(unit):
 	return obj
 
 def isPhaseLine(unit):
-	return unit.description.startswith('PHASE LINE')
+	return unit.description.startswith('PHASE LINE') or unit.description.startswith('PL')
 
 url='http://rotorheads.ddns.net'
 reader=ServerReader(url)
@@ -61,6 +61,8 @@ additionalInfo=AbrisAdditional()
 redFtrs=reader.readPoints(redForUrl)
 redPts=[ftr.location for ftr in redFtrs]
 lines=bufferZone(redPts,Color.red)
+for line in lines:
+	line.type=LineType.filledHostile
 additionalInfo.AddLines(lines)
 
 
@@ -69,7 +71,7 @@ phaseLinePoints = {}
 
 for ftr in units: 
 	if isPhaseLine(ftr):
-		name=re.match("PHASE LINE (\w+)",ftr.description).group(1)
+		name=ftr.description.split()[-1]
 		phaseLinePoints.setdefault(name, []).append(ftr.location)
 
 phaseLines = []

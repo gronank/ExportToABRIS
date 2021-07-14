@@ -42,12 +42,12 @@ def getPoint(pt:Tuple[float,float]):
 		"longitude":long,
 		"latitude":lat
 		}
-
+# type 2 filled blue
 def getLineObjects(lines):
 	abrisLines = []
 	for line in lines:
 		lineGeometry = {
-			"type":1,
+			"type":line.type,
 			"name":line.name,
 			"sub_type":0,
 			"color":line.color,

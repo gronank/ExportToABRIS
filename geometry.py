@@ -73,9 +73,14 @@ class Color:
 	       "G":0,
 	       "B":0}
 
+class LineType:
+	line=1
+	filledHostile=2
+
 class Line:
     name=""
     color=[]
+    type=LineType.line
     points:List[Tuple[float,float]]=[]
     def __init__(self, points:List[Tuple[float,float]],color,name:str=""):
         self.points=points
