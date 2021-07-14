@@ -13,8 +13,12 @@
     <RootNamespace>RotorheadToABRIS</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>"C:\Users\ander\source\Saved Games\DCS\ABRIS\"</CommandLineArguments>
+    <CommandLineArguments>
+    </CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <InterpreterPath>
+    </InterpreterPath>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +29,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="exportabris.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="geometry.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="serverreader.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="RotorheadToABRIS.py" />
     <Compile Include="serialize.py">
       <SubType>Code</SubType>
