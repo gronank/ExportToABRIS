@@ -29,6 +29,7 @@ def getAbrisBase():
 		"month":6,
 		}
 	}
+
 def getNavPoint(navPoint):
 	pt=getPoint(navPoint.point)
 	pt["course"]=0
