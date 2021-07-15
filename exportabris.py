@@ -62,13 +62,13 @@ def getNavObjects(navPoints):
 	for navPoint in navPoints:
 		refPoint={
 			"type":navPoint.symbolType[1],
-			"name":navPoint.name,
-			"callsign":navPoint.name,
+			"name":navPoint.name.upper(),
+			"callsign":navPoint.name.upper(),
 			"class":navPoint.symbolType[0],#"ABRIS_Waypoint",
 			"position":getNavPoint(navPoint),
 			"sub_type":navPoint.symbolType[2],
 		}
-		referencePoints[uuid.uuid4()]=refPoint
+		referencePoints['{'+str(uuid.uuid4())+'}']=refPoint
 	return referencePoints
 
 class AbrisAdditional:

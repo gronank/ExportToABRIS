@@ -3,10 +3,9 @@ from typing import List,Tuple
 from itertools import permutations
 
 scale=1e4
-bufferSize=1.5#Nm
 NmToDegrees=1.0/60
 
-def bufferZone(points:List[Tuple[float,float]], color):
+def bufferZone(points:List[Tuple[float,float]], color, bufferSize):
 	offset=pc.PyclipperOffset()
 	clipperPoints = pc.scale_to_clipper(points,scale)
 	for pt in clipperPoints:
