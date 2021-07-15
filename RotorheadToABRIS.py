@@ -1,6 +1,6 @@
 import re
 from serverreader import ServerReader
-from geometry import bufferZone, getPhaseLine, Color, NavPoint,Line,LineType
+from geometry import bufferZone, getPhaseLine, Color, NavPoint, Line, LineType, SymbolType
 from exportabris import AbrisAdditional, AbrisNavigation
 
 def getSamName(unit):
@@ -34,20 +34,23 @@ navPoints = []
 for unit in units:
 	nav=NavPoint()
 	if unit.description.startswith('Objective Area'):
-		nav.type_id=0
+		nav.symbolType=SymbolType.referencePoint
 		nav.name=getObjName(unit)
-		nav.sub_type=8
+		#nav.sub_type=8
 	elif unit.icon=='sam':
-		nav.type_id=4
+		nav.symbolType=SymbolType.airDefenceHostile
+		#nav.type_id=4
 		nav.name=getSamName(unit)
-		nav.sub_type=2
+		#nav.sub_type=2
 	elif unit.icon=='infant':
-		nav.type_id=4
-		nav.sub_type=0
+		#nav.type_id=4
+		#nav.sub_type=0
+		nav.symbolType=SymbolType.unknownHostile
 		nav.name=getInfName(unit)
 	elif unit.icon=='bvehicle':
-		nav.type_id=0
-		nav.sub_type=1
+		#nav.type_id=0
+		#nav.sub_type=1
+		nav.symbolType=SymbolType.initialPoint
 		nav.name=getVehcName(unit)
 	else:
 		continue

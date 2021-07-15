@@ -77,6 +77,48 @@ class LineType:
 	line=1
 	filledHostile=2
 
+class SymbolType:
+	#Waypoints
+	referencePoint=("ABRIS_Waypoint", 0, 8)
+	initialPoint  =("ABRIS_Waypoint", 0, 1)
+	landmark      =("ABRIS_Waypoint", 0, 2)
+	obstacle      =("ABRIS_Waypoint", 0, 4)
+	climbPoint    =("ABRIS_Waypoint", 0, 16)
+	divePoint     =("ABRIS_Waypoint", 0, 32)
+
+	#Airdrome
+	airbase       =("ABRIS_Waypoint_Airdrome", 1, 6)
+	farp          =("ABRIS_Waypoint_Airdrome", 1, 10)
+	navalbase     =("ABRIS_Waypoint_Airdrome", 1, 18)
+	airport       =("ABRIS_Waypoint_Airdrome", 1, 5)
+	heliport      =("ABRIS_Waypoint_Airdrome", 1, 9)
+	closed_airport=("ABRIS_Waypoint_Airdrome", 1, 32)
+	common_airport=("ABRIS_Waypoint_Airdrome", 1, 4)
+	new_airport   =("ABRIS_Waypoint_Airdrome", 1, 64)
+
+	#Beacon
+	vorPoint       =("ABRIS_Waypoint_Beacon", 2, 1)
+	dmePoint       =("ABRIS_Waypoint_Beacon", 2, 2)
+	tacanPoint     =("ABRIS_Waypoint_Beacon", 2, 4)
+	homerPoint     =("ABRIS_Waypoint_Beacon", 2, 8)
+	vorDmePoint    =("ABRIS_Waypoint_Beacon", 2, 3)
+	vorTacanPoint  =("ABRIS_Waypoint_Beacon", 2, 5)
+	airportHomer   =("ABRIS_Waypoint_Beacon", 2, 264)
+	routeMarker    =("ABRIS_Waypoint_Beacon", 2, 528)
+	ilsMarker      =("ABRIS_Waypoint_Beacon", 2, 1040)
+
+	#Town
+	#town           =("ABRIS_Waypoint_Town", 3, 0)
+
+	#Datalink
+	unknownHostile =("ABRIS_Datalink_Point", 4, 0)
+	armouredHostile=("ABRIS_Datalink_Point", 4, 1)
+	airDefenceHostile=("ABRIS_Datalink_Point", 4, 2)
+	otherHostile   =("ABRIS_Datalink_Point", 4, 3)
+	dlInitial      =("ABRIS_Datalink_Point", 4, 4)
+	groupMember    =("ABRIS_Datalink_Point", 4, 5)
+
+
 class Line:
     name=""
     color=[]
@@ -89,7 +131,6 @@ class Line:
 
 class NavPoint:
 	point:Tuple[float,float]=[]
-	type_id:str=""
-	sub_type:str=""
+	symbolType:SymbolType = SymbolType.referencePoint
 	name:str=""
 
