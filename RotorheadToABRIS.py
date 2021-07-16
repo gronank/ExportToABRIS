@@ -2,6 +2,7 @@ import re
 from serverreader import ServerReader
 from geometry import bufferZone, getPhaseLine, Color, NavPoint, Line, LineType, SymbolType
 from exportabris import AbrisAdditional, AbrisNavigation
+from commandline import modifiers
 
 def getSamName(unit):
 	fullName=unit.description.split('Spotted: ')[1]
@@ -34,22 +35,22 @@ units=reader.readPoints(unitsUrl)
 navPoints = []
 for unit in units:
 	nav=NavPoint()
-	if unit.description.startswith('JTAC - '):
+	if unit.description.startswith('JTAC - ') and not 'nojtac' in modifiers:
 		nav.symbolType=SymbolType.landmark
 		nav.name=unit.description.split(' - ')[1]
-	elif unit.description.startswith('Farp'):
+	elif unit.description.startswith('Farp') and not 'nofarp' in modifiers:
 		nav.symbolType=SymbolType.farp
 		nav.name=unit.description.split(' ')[1]
-	elif unit.description.startswith('Objective Area'):
+	elif unit.description.startswith('Objective Area')and not 'noobj' in modifiers:
 		nav.symbolType=SymbolType.referencePoint
 		nav.name=getObjName(unit)
-	elif unit.icon=='sam':
+	elif unit.icon=='sam'and not 'nosam' in modifiers:
 		nav.symbolType=SymbolType.airDefenceHostile
 		nav.name=getSamName(unit)
-	elif unit.icon =='mark':
+	elif unit.icon =='mark'and not 'nomark' in modifiers:
 		nav.symbolType=SymbolType.obstacle
 		nav.name=unit.description.split(' ')[0]
-	elif unit.description.startswith('CSAR'):
+	elif unit.description.startswith('CSAR') and not 'nocsar' in modifiers:
 		nav.symbolType=SymbolType.homerPoint
 		nav.name=unit.description.split('-')[-1].split('<br>')[0]
 	#elif unit.icon=='infant':

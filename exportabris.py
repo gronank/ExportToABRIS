@@ -1,15 +1,9 @@
 from geometry import Line, NavPoint
 from typing import List, Tuple
 import uuid
-import os
-import sys
 import serialize
+from commandline import databasePath
 
-folderPath=os.getcwd()
-if(len(sys.argv)>1):
-	folderPath=' '.join(sys.argv[1:]).strip('"')
-databasePath=  os.path.join(folderPath, "Database\\")
-os.makedirs(databasePath,exist_ok=True)
 
 def save(name,varName,data):
 	with open(databasePath + name,'w') as file:

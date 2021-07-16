@@ -13,7 +13,7 @@
     <RootNamespace>RotorheadToABRIS</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>C:\Users\ander\source\Saved Games\DCS\RotorheadToABRIS</CommandLineArguments>
+    <CommandLineArguments>-nocsar C:\Users\ander\source\Saved Games\DCS\RotorheadToABRIS</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <InterpreterPath>
     </InterpreterPath>
@@ -28,6 +28,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="commandline.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="exportabris.py">
       <SubType>Code</SubType>
     </Compile>
