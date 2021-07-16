@@ -5,7 +5,7 @@ Rotorhead to ABRIS is an application that will read the current state of the Rot
 Information such as disposition of friendly and hostile troops, enemy AA batteries, JTAC locations et.c is available. In the Russian fashion, blue denotes hostile and red friendlies.
 
 ### Usage
-1. Go to The [release page] to get the latest version of the application.
+1. Go to The [release page](https://github.com/gronank/RotorheadToABRIS/releases) to get the latest version of the application.
 2. Unpack the zip into your saved games/DCS directory (You should end up with a RotorheadsToABRIS folder in your DCS directory).
 3. Open the file /Mods/aircraft/Ka-50/Cockpit/Device_specs/ABRIS.lua
 4. Go to the line **default_path = get_terrain_related_data("ABRIS_data_path")** (line 42 as of writing) and replace it with **default_path = get_terrain_related_data("ABRIS_data_path") or lfs.writedir().."RotorheadToABRIS/"**
