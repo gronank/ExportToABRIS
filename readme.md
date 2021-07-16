@@ -13,4 +13,5 @@ Information such as disposition of friendly and hostile troops, enemy AA batteri
 
 ### Notes
 * This does not take into account what mission you're actually running, ie all Ka-50 missions will get rotorheads data in them unless you restore the lua or delete the Database folder
+* The database will be loaded when the module is first loaded, i.e. when you first enter the Ka-50 slot.
 
