@@ -12,6 +12,6 @@ Information such as disposition of friendly and hostile troops, enemy AA batteri
 5. Run the RotorheadsToABRIS.exe inside the newly unpacked folder. A Database folder will appear. Running the application again updates the data available to ABRIS
 
 ### Notes
-* This does not take into account what mission you're actually running, ie all Ka-50 missions will get rotorheads data in them unless you restore the lua or delete the Database folder.
+* This does not take into account what mission you're actually running. All Ka-50 missions will show the rotorheads data unless you restore the lua or delete the Database folder.
 * The database will be loaded when the module is first loaded, i.e. when you first enter the Ka-50 slot.
 
