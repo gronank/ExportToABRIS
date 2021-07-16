@@ -7,7 +7,7 @@ Information such as disposition of friendly and hostile troops, enemy AA batteri
 ### Usage
 1. Go to The [release page](https://github.com/gronank/RotorheadToABRIS/releases) to get the latest version of the application
 2. Unpack the zip into your saved games/DCS directory (You should end up with a RotorheadsToABRIS folder in your DCS directory)
-3. Open the file /Mods/aircraft/Ka-50/Cockpit/Device_specs/ABRIS.lua
+3. Open the file <DCS install directory>/Mods/aircraft/Ka-50/Cockpit/Scripts/Devices_specs/ABRIS.lua
 4. Go to the line **default_path = get_terrain_related_data("ABRIS_data_path")** (line 42 as of writing) and replace it with **default_path = get_terrain_related_data("ABRIS_data_path") or lfs.writedir().."RotorheadToABRIS/"**
 5. Run the RotorheadsToABRIS.exe inside the newly unpacked folder. A Database folder will appear. Running the application again updates the data available to ABRIS
 
