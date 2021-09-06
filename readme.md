@@ -15,3 +15,10 @@ Information such as disposition of friendly and hostile troops, enemy AA batteri
 * This does not take into account what mission you're actually running. All Ka-50 missions will show the rotorheads data unless you restore the lua or delete the Database folder.
 * The database will be loaded when the module is first loaded, i.e. when you first enter the Ka-50 slot.
 
+### Command line arguments
+The application can be supplied various arguments to modify the result
+* **-nocsar** Removes csar symbols
+* **-noobj** Removes objective markers
+* **-nosam** Removes the sam markers
+* **-nofarp** Removes farp markers (the ones added by the game still remains)
+* **-nojtac** Removes jtac symbols
