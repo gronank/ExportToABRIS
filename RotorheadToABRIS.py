@@ -17,8 +17,10 @@ def getVehcName(unit):
 	return name
 
 def getObjName(unit):
-	obj=re.match("Objective Area: (\w+).+",unit.description).group(1)
-	return obj
+	objectiveText=re.match("Objective Area:(.+)",unit.description).group(1)
+	objectiveText=re.match("(.*) .+",objectiveText).group(1)
+	objectiveText=objectiveText.strip();
+	return objectiveText
 
 def isPhaseLine(unit):
 	return unit.description.startswith('PHASE LINE') or unit.description.startswith('PL')
