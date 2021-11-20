@@ -56,77 +56,96 @@ def getPhaseLine(phaseLinePts):
 	# segments[0]]
 
 class Color:
-    red={"R":255,
-	     "G":0,
-	     "B":0}
-    yellow={"R":190,
-	     "G":128,
-	     "B":0}
-    green={"R":0,
-	       "G":255,
-	       "B":0}
-    white={"R":255,
-	       "G":255,
-	       "B":255}
-    black={"R":0,
-	       "G":0,
-	       "B":0}
+	red={"R":255,
+		 "G":0,
+		 "B":0}
+	yellow={"R":190,
+		 "G":128,
+		 "B":0}
+	green={"R":0,
+		   "G":255,
+		   "B":0}
+	white={"R":255,
+		   "G":255,
+		   "B":255}
+	black={"R":0,
+		   "G":0,
+		   "B":0}
+
+	def parse(self, propertyName):
+		if not hasattr(self, propertyName):
+			colorParts = propertyName.split(',')
+			if(len(colorParts)!=3):
+				raise Exception(f'Unable to parse color {propertyName}')
+			colorComponents=[float(p) in colorParts]
+			return {key: value for key, value in zip(['R','G','B'],colorComponents)}
+		return getattr(self, propertyName)
 
 class LineType:
 	line=1
 	filledHostile=2
 
+	def parse(self, propertyName):
+		if not hasattr(self, propertyName):
+			raise Exception(f'Unkown line type {propertyName}')
+		return getattr(self, propertyName)
+
 class SymbolType:
 	#Waypoints
 	referencePoint=("ABRIS_Waypoint", 0, 8)
 	initialPoint  =("ABRIS_Waypoint", 0, 1)
-	landmark      =("ABRIS_Waypoint", 0, 2)
-	obstacle      =("ABRIS_Waypoint", 0, 4)
-	climbPoint    =("ABRIS_Waypoint", 0, 16)
-	divePoint     =("ABRIS_Waypoint", 0, 32)
+	landmark	  =("ABRIS_Waypoint", 0, 2)
+	obstacle	  =("ABRIS_Waypoint", 0, 4)
+	climbPoint	=("ABRIS_Waypoint", 0, 16)
+	divePoint	 =("ABRIS_Waypoint", 0, 32)
 
 	#Airdrome
-	airbase       =("ABRIS_Waypoint_Airdrome", 1, 6)
-	farp          =("ABRIS_Waypoint_Airdrome", 1, 10)
-	navalbase     =("ABRIS_Waypoint_Airdrome", 1, 18)
-	airport       =("ABRIS_Waypoint_Airdrome", 1, 5)
-	heliport      =("ABRIS_Waypoint_Airdrome", 1, 9)
+	airbase	   =("ABRIS_Waypoint_Airdrome", 1, 6)
+	farp		  =("ABRIS_Waypoint_Airdrome", 1, 10)
+	navalbase	 =("ABRIS_Waypoint_Airdrome", 1, 18)
+	airport	   =("ABRIS_Waypoint_Airdrome", 1, 5)
+	heliport	  =("ABRIS_Waypoint_Airdrome", 1, 9)
 	closed_airport=("ABRIS_Waypoint_Airdrome", 1, 32)
 	common_airport=("ABRIS_Waypoint_Airdrome", 1, 4)
 	new_airport   =("ABRIS_Waypoint_Airdrome", 1, 64)
 
 	#Beacon
-	vorPoint       =("ABRIS_Waypoint_Beacon", 2, 1)
-	dmePoint       =("ABRIS_Waypoint_Beacon", 2, 2)
-	tacanPoint     =("ABRIS_Waypoint_Beacon", 2, 4)
-	homerPoint     =("ABRIS_Waypoint_Beacon", 2, 8)
-	vorDmePoint    =("ABRIS_Waypoint_Beacon", 2, 3)
+	vorPoint	   =("ABRIS_Waypoint_Beacon", 2, 1)
+	dmePoint	   =("ABRIS_Waypoint_Beacon", 2, 2)
+	tacanPoint	 =("ABRIS_Waypoint_Beacon", 2, 4)
+	homerPoint	 =("ABRIS_Waypoint_Beacon", 2, 8)
+	vorDmePoint	=("ABRIS_Waypoint_Beacon", 2, 3)
 	vorTacanPoint  =("ABRIS_Waypoint_Beacon", 2, 5)
 	airportHomer   =("ABRIS_Waypoint_Beacon", 2, 264)
-	routeMarker    =("ABRIS_Waypoint_Beacon", 2, 528)
-	ilsMarker      =("ABRIS_Waypoint_Beacon", 2, 1040)
+	routeMarker	=("ABRIS_Waypoint_Beacon", 2, 528)
+	ilsMarker	  =("ABRIS_Waypoint_Beacon", 2, 1040)
 
 	#Town
-	#town           =("ABRIS_Waypoint_Town", 3, 0)
+	#town		   =("ABRIS_Waypoint_Town", 3, 0)
 
 	#Datalink
 	unknownHostile =("ABRIS_Datalink_Point", 4, 0)
 	armouredHostile=("ABRIS_Datalink_Point", 4, 1)
 	airDefenceHostile=("ABRIS_Datalink_Point", 4, 2)
 	otherHostile   =("ABRIS_Datalink_Point", 4, 3)
-	dlInitial      =("ABRIS_Datalink_Point", 4, 4)
-	groupMember    =("ABRIS_Datalink_Point", 4, 5)
+	dlInitial	  =("ABRIS_Datalink_Point", 4, 4)
+	groupMember	=("ABRIS_Datalink_Point", 4, 5)
+
+	def parse(propertyName):
+		if not hasattr(SymbolType, propertyName):
+			raise Exception(f'Unkown symbol type {propertyName}')
+		return getattr(SymbolType, propertyName)
 
 
 class Line:
-    name=""
-    color=[]
-    type=LineType.line
-    points:List[Tuple[float,float]]=[]
-    def __init__(self, points:List[Tuple[float,float]],color,name:str=""):
-        self.points=points
-        self.color=color
-        self.name=name
+	name=""
+	color=[]
+	type=LineType.line
+	points:List[Tuple[float,float]]=[]
+	def __init__(self, points:List[Tuple[float,float]],color,name:str=""):
+		self.points=points
+		self.color=color
+		self.name=name
 
 class NavPoint:
 	point:Tuple[float,float]=[]

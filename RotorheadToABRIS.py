@@ -25,10 +25,15 @@ def getObjName(unit):
 def isPhaseLine(unit):
 	return unit.description.startswith('PHASE LINE') or unit.description.startswith('PL')
 
-url='http://rotorheads.ddns.net'
+#url='http://rotorheads.ddns.net'
+#redForUrl='/mapdata/mapred.json'
+#unitsUrl='/mapdata/map.json'
+url="file:///C:\\Users\\ander\\source\\repos\\RotorheadToABRIS\\Tests\\Data\\Rotorheads\\Test1\\"
+redForUrl="mapred.json"
+unitsUrl="map.json"
+
 reader=ServerReader(url)
-redForUrl='/mapdata/mapred.json'
-unitsUrl='/mapdata/map.json'
+
 
 # Visible units
 navigation=AbrisNavigation()

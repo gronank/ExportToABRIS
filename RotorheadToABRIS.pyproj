@@ -4,9 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ddddf615-1b24-45bd-9387-f0284055566a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>RotorheadToABRIS.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <StartupFile>Tests\test_url.py</StartupFile>
+    <SearchPath>Tests</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>RotorheadToABRIS</Name>
@@ -18,6 +17,9 @@
     <InterpreterPath>
     </InterpreterPath>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <TestFramework>unittest</TestFramework>
+    <UnitTestPattern>test*.py</UnitTestPattern>
+    <UnitTestRootDirectory>Tests/</UnitTestRootDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,10 +33,19 @@
     <Compile Include="commandline.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="condition.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="exportabris.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ExportToAbris.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="geometry.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="parsecommands.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="serverreader.py">
@@ -42,6 +53,15 @@
     </Compile>
     <Compile Include="RotorheadToABRIS.py" />
     <Compile Include="serialize.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\testSpec.json">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\test_commandParsing.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\test_url.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -59,6 +79,19 @@
   <ItemGroup>
     <Content Include="readme.md" />
     <Content Include="requirements.txt" />
+    <Content Include="Tests\Reference\Rotorheads\Test1\ADDITIONAL.lua" />
+    <Content Include="Tests\Reference\Rotorheads\Test1\NAVIGATION.lua" />
+    <Content Include="Tests\Data\Rotorheads\Test1\map.json" />
+    <Content Include="Tests\Data\Rotorheads\Test1\mapred.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
+    <Folder Include="Tests\Data\" />
+    <Folder Include="Tests\Data\Rotorheads\" />
+    <Folder Include="Tests\Reference\" />
+    <Folder Include="Tests\Data\Rotorheads\Test1\" />
+    <Folder Include="Tests\Reference\Rotorheads\" />
+    <Folder Include="Tests\Reference\Rotorheads\Test1\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

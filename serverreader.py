@@ -7,6 +7,7 @@ class PointFeature:
     description=""
     location=(0,0)
     icon=""
+    properties=[]
 
 class ServerReader:
     url=""
@@ -21,5 +22,6 @@ class ServerReader:
             ptFtr.description=object['properties']['description']
             ptFtr.icon=object['properties'].get('icon')
             ptFtr.location=object['geometry']['coordinates']
+            ptFtr.properties=object['properties']
             features.append(ptFtr)
         return features
