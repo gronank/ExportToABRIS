@@ -4,20 +4,22 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ddddf615-1b24-45bd-9387-f0284055566a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>RotorheadToABRIS.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <StartupFile>ExportToAbris.py</StartupFile>
+    <SearchPath>Tests</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>RotorheadToABRIS</Name>
     <RootNamespace>RotorheadToABRIS</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>-nocsar C:\Users\ander\source\Saved Games\DCS\RotorheadToABRIS</CommandLineArguments>
+    <CommandLineArguments>"C:\Users\ander\source\repos\RotorheadToABRIS\Specs\rotorheads.serverspec.json" -nofarp -nocsar</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <InterpreterPath>
     </InterpreterPath>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <TestFramework>unittest</TestFramework>
+    <UnitTestPattern>test*.py</UnitTestPattern>
+    <UnitTestRootDirectory>Tests/</UnitTestRootDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,20 +30,34 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="commandline.py">
+    <Compile Include="condition.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="exportabris.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ExportToAbris.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="geometry.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="parsecommands.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="serverreader.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="RotorheadToABRIS.py" />
     <Compile Include="serialize.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\testSpec.json">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\test_commandParsing.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\test_url.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -59,6 +75,12 @@
   <ItemGroup>
     <Content Include="readme.md" />
     <Content Include="requirements.txt" />
+    <Content Include="Specs\fraternity.serverspec .json" />
+    <Content Include="Specs\rotorheads.serverspec.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Specs\" />
+    <Folder Include="Tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

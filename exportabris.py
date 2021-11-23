@@ -2,11 +2,14 @@ from geometry import Line, NavPoint
 from typing import List, Tuple
 import uuid
 import serialize
-from commandline import databasePath
+import os
 
 
-def save(name,varName,data):
-	with open(databasePath + name,'w') as file:
+def save(name,varName,data, destinationFolder):
+	if destinationFolder is None:
+			destinationFolder = databasePath
+	os.makedirs(destinationFolder,exist_ok=True)
+	with open(os.path.join(destinationFolder, name),'w') as file:
 		serialized = serialize.dumps(data,varname=varName,indent=0)
 		file.write(serialized)
 
@@ -69,19 +72,19 @@ class AbrisAdditional:
 	lines:List[Line] = []
 	def AddLines(self,newLines:List[Line]):
 		self.lines.extend(newLines)
-	def Export(self):
+	def Export(self, destinationFolder = None):
 		additional = getAbrisBase()
 		
 		additional["additional_objects"] = getLineObjects(self.lines)
-		save("ADDITIONAL.lua",'additional', additional)
+		save("ADDITIONAL.lua",'additional', additional, destinationFolder)
 
 class AbrisNavigation:
 	navPoints:List[Line] = []
 	def AddNavPoints(self,newPoints:List[NavPoint]):
 		self.navPoints.extend(newPoints)
-	def Export(self):
+	def Export(self, destinationFolder = None):
 		navigation = getAbrisBase()
 		navigation["region"]=""
 		navigation["waypoints"] = getNavObjects(self.navPoints)
-		save("NAVIGATION.lua",'navigation', navigation)
+		save("NAVIGATION.lua",'navigation', navigation, destinationFolder)
 		

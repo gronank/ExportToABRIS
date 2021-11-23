@@ -1,0 +1,133 @@
+{
+  "serverUrl": "http://rotorheads.ddns.net/mapdata/",
+
+  "dataSources": {
+    "mapred": "mapred.json",
+    "map": "map.json"
+  },
+
+  "points": [
+    {
+      "sources": [ "map" ],
+      "condition": {
+        "property": "description",
+        "pattern": "^JTAC -"
+      },
+      "symbolType": "landmark",
+      "name": {
+        "property": "description",
+        "pattern": "^JTAC - (\\S*).*",
+        "replace": "\\1"
+      },
+      "disable": "nojtac"
+    },
+    {
+      "sources": [ "map" ],
+      "condition": {
+        "property": "description",
+        "pattern": "^Farp "
+      },
+      "symbolType": "farp",
+      "name": {
+        "property": "description",
+        "pattern": "^Farp (\\S*).*",
+        "replace": "\\1"
+      },
+      "disable": "nofarp"
+    },
+    {
+      "sources": [ "map" ],
+      "condition": {
+        "property": "icon",
+        "pattern": "^sam$"
+      },
+      "symbolType": "airDefenceHostile",
+      "name": {
+        "property": "description",
+        "pattern": ".*Spotted: (\\S*) .*",
+        "replace": "\\1"
+      },
+      "disable": "nosam"
+    },
+    {
+      "sources": [ "map" ],
+      "condition": {
+        "property": "description",
+        "pattern": "^Objective Area "
+      },
+      "symbolType": "referencePoint",
+      "name": {
+        "property": "description",
+        "pattern": "^Objective Area: *(\\S*).*",
+        "replace": "\\1"
+      },
+      "disable": "noobj"
+    },
+    {
+      "sources": [ "map" ],
+      "condition": {
+        "property": "icon",
+        "pattern": "^mark$"
+      },
+      "symbolType": "obstacle",
+      "name": {
+        "property": "description",
+        "pattern": "^ *(\\S*).*",
+        "replace": "\\1"
+      },
+      "disable": "nomark"
+    },
+    {
+      "sources": [ "map" ],
+      "condition": {
+        "property": "description",
+        "pattern": "^CSAR"
+      },
+      "symbolType": "homerPoint",
+      "name": {
+        "property": "description",
+        "pattern": "CSAR: *(.*?) *<br>.*",
+        "replace": "\\1"
+      },
+      "disable": "nocsar"
+    }
+  ],
+
+  "bufferZones": [
+    {
+      "style": "filledHostile",
+      "color": "red",
+      "bufferSize": 1.5,
+      "sources": [ "mapred" ],
+      "disable": "nohostile"
+    },
+    {
+      "style": "line",
+      "color": "red",
+      "bufferSize": 0.25,
+      "sources": [ "map" ],
+      "condition": {
+        "property": "icon",
+        "pattern": "(bvehicle|infant)"
+      },
+      "disable": "nofriendly"
+    }
+  ],
+
+  "lines": [
+    {
+      "sources": [ "map" ],
+      "condition": {
+        "property": "description",
+        "pattern": "^(PHASE LINE|PL)"
+      },
+      "name": {
+        "property": "description",
+        "pattern": "^(PHASE LINE|PL) *(\\S*).*",
+        "replace": "PL \\2"
+      },
+      "color": "black",
+      "disable": "nophaseline"
+    }
+  ]
+}
