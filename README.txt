@@ -1,12 +1,12 @@
 This program will take the situation from http://rotorheads.ddns.net/ and make it available to the ingame Ka-50 ABRIS system
 
 Instructions:
-1. Unpack this zip to your "saved games/DCS" folder (there should exist a "saved games/DCS/RotorheadToABRIS" folder
+1. Unpack this zip to your "saved games/DCS" folder (there should exist a "saved games/DCS/ExportToABRIS" folder
 2. open file <DCS install directory>/Mods/aircraft/Ka-50/Cockpit/Scripts/Devices_specs/ABRIS.lua
 3. go to the line "default_path = get_terrain_related_data("ABRIS_data_path")" (line 42 as of writing)
 4. to that line, append:
- or lfs.writedir().."RotorheadToABRIS/"
-5. run the RotorheadToABRIS.exe program each time you want to update, doing this creates a Database folder
+ or lfs.writedir().."ExportToABRIS/"
+5. drop the serverspec.json file of your choice on the ExportToABRIS.exe program each time you want to update, doing this creates a Database folder
 
 Note:
 * This does not take into account what mission you're actually running, ie all Ka-50 missions will get rotorheads data in them unless you restore the lua or delete the Database folder.

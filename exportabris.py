@@ -2,13 +2,14 @@ from geometry import Line, NavPoint
 from typing import List, Tuple
 import uuid
 import serialize
-from commandline import databasePath
+import os
 
 
 def save(name,varName,data, destinationFolder):
 	if destinationFolder is None:
 			destinationFolder = databasePath
-	with open(destinationFolder + name,'w') as file:
+	os.makedirs(destinationFolder,exist_ok=True)
+	with open(os.path.join(destinationFolder, name),'w') as file:
 		serialized = serialize.dumps(data,varname=varName,indent=0)
 		file.write(serialized)
 

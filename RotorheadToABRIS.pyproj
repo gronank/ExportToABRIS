@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ddddf615-1b24-45bd-9387-f0284055566a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tests\test_url.py</StartupFile>
+    <StartupFile>ExportToAbris.py</StartupFile>
     <SearchPath>Tests</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -12,7 +12,7 @@
     <RootNamespace>RotorheadToABRIS</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>-nocsar C:\Users\ander\source\Saved Games\DCS\RotorheadToABRIS</CommandLineArguments>
+    <CommandLineArguments>"C:\Users\ander\source\repos\RotorheadToABRIS\Specs\rotorheads.serverspec.json" -nofarp -nocsar</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <InterpreterPath>
     </InterpreterPath>
@@ -79,12 +79,15 @@
   <ItemGroup>
     <Content Include="readme.md" />
     <Content Include="requirements.txt" />
+    <Content Include="Specs\fraternity.serverspec .json" />
+    <Content Include="Specs\rotorheads.serverspec.json" />
     <Content Include="Tests\Reference\Rotorheads\Test1\ADDITIONAL.lua" />
     <Content Include="Tests\Reference\Rotorheads\Test1\NAVIGATION.lua" />
     <Content Include="Tests\Data\Rotorheads\Test1\map.json" />
     <Content Include="Tests\Data\Rotorheads\Test1\mapred.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Specs\" />
     <Folder Include="Tests\" />
     <Folder Include="Tests\Data\" />
     <Folder Include="Tests\Data\Rotorheads\" />

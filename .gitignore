@@ -340,5 +340,5 @@ ASALocalRun/
 healthchecksdb
 /env
 /Database
-/build/RotorheadToABRIS
+/build/
 /dist

@@ -9,7 +9,7 @@ class Condition:
             self.pattern =re.compile(condition["pattern"])
 
     def match(self,feature):
-        if pattern:
+        if self.pattern:
             value = feature.properties[self.property]
             return self.pattern.match(value) is not None
         else:
@@ -27,7 +27,7 @@ class NameParser:
         self.replace = condition["replace"]
 
     def parse(self,feature):
-        if pattern is None:
+        if self.pattern is None:
             return replace
         value = feature.properties[self.property]
         match = self.pattern.sub(self.replace, value)

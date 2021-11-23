@@ -3,6 +3,7 @@ from condition import Condition, NameParser
 from geometry import bufferZone, getPhaseLine, Color, NavPoint, Line, LineType, SymbolType
 from exportabris import AbrisAdditional, AbrisNavigation
 from parsecommands import ConsoleCommands
+import sys
 import json
 
 def readFeatureSets(spec):
@@ -11,12 +12,12 @@ def readFeatureSets(spec):
 
 def getFeatures(spec, featureSets):
     condition = Condition(spec.get("condition"))
-    return (ftr for setName in data["sources"] for ftr in featureSets[setName] if condition.match(ftr))
+    return (ftr for setName in spec["sources"] for ftr in featureSets[setName] if condition.match(ftr))
 
 def parsePoints(pointSpecs, featureSets, disabler):
     points = []
     for pointSpec in pointSpecs:
-        if disabler.disabled(pointSpec):
+        if disabler.disable(pointSpec):
             continue
         symbolType = SymbolType.parse(pointSpec["symbolType"])
         nameParser = NameParser(pointSpec.get("name"))
@@ -33,7 +34,7 @@ def parsePoints(pointSpecs, featureSets, disabler):
 def parseBufferZones(bufferSpecs, featureSets, disabler):
     zones = []
     for bufferSpec in bufferSpecs:
-        if disabler.disabled(bufferSpec):
+        if disabler.disable(bufferSpec):
             continue
         units = getFeatures(bufferSpec, featureSets)
         friendlyBufferSize = bufferSpec["bufferSize"]#Nm
@@ -43,13 +44,13 @@ def parseBufferZones(bufferSpecs, featureSets, disabler):
         newZones = bufferZone(friendlyLocs, color, friendlyBufferSize)
         for zone in newZones:
             zone.type = style
-        zones.append(newZones)
+        zones.extend(newZones)
     return zones
 
 def parseLines(lineSpecs, featureSets, disabler):
     lines = []
     for lineSpec in lineSpecs:
-        if disabler.disabled(lineSpec):
+        if disabler.disable(lineSpec):
             continue
         nameParser = NameParser(lineSpec.get("name"))
         color = Color.parse(lineSpec.get("color","black"))

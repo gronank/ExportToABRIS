@@ -72,23 +72,23 @@ class Color:
 		   "G":0,
 		   "B":0}
 
-	def parse(self, propertyName):
-		if not hasattr(self, propertyName):
+	def parse(propertyName):
+		if not hasattr(Color, propertyName):
 			colorParts = propertyName.split(',')
 			if(len(colorParts)!=3):
 				raise Exception(f'Unable to parse color {propertyName}')
 			colorComponents=[float(p) in colorParts]
 			return {key: value for key, value in zip(['R','G','B'],colorComponents)}
-		return getattr(self, propertyName)
+		return getattr(Color, propertyName)
 
 class LineType:
 	line=1
 	filledHostile=2
 
-	def parse(self, propertyName):
-		if not hasattr(self, propertyName):
+	def parse(propertyName):
+		if not hasattr(LineType, propertyName):
 			raise Exception(f'Unkown line type {propertyName}')
-		return getattr(self, propertyName)
+		return getattr(LineType, propertyName)
 
 class SymbolType:
 	#Waypoints
