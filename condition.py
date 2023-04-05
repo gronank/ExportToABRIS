@@ -1,3 +1,5 @@
+from msilib.schema import Property
+from pickle import NONE
 import re
 
 class Condition:
@@ -10,7 +12,10 @@ class Condition:
 
     def match(self,feature):
         if self.pattern:
-            value = feature.properties[self.property]
+            properties = feature.get('properties');
+            if(properties is None):
+                return False;
+            value = properties[self.property]
             return self.pattern.match(value) is not None
         else:
             return True
@@ -29,7 +34,10 @@ class NameParser:
     def parse(self,feature):
         if self.pattern is None:
             return replace
-        value = feature.properties[self.property]
+        properties = feature.get('properties');
+        if(properties is None):
+            return "";
+        value = properties[self.property]
         match = self.pattern.sub(self.replace, value)
         return match
 

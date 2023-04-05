@@ -24,7 +24,7 @@ def parsePoints(pointSpecs, featureSets, disabler):
         features = getFeatures(pointSpec, featureSets)
         for feature in features:
             nav=NavPoint()
-            nav.point=feature.location
+            nav.point=feature['geometry']['coordinates']
             nav.symbolType=symbolType
             nav.name = nameParser.parse(feature)
             points.append(nav)
@@ -40,7 +40,7 @@ def parseBufferZones(bufferSpecs, featureSets, disabler):
         friendlyBufferSize = bufferSpec["bufferSize"]#Nm
         style = LineType.parse(bufferSpec.get("style","line"))
         color = Color.parse(bufferSpec.get("color","black"))
-        friendlyLocs=[ftr.location for ftr in units ]
+        friendlyLocs=[ftr['geometry']['coordinates'] for ftr in units]
         newZones = bufferZone(friendlyLocs, color, friendlyBufferSize)
         for zone in newZones:
             zone.type = style
@@ -58,7 +58,7 @@ def parseLines(lineSpecs, featureSets, disabler):
         pointFtrs = getFeatures(lineSpec, featureSets)
         for pointFtr in pointFtrs:
             pointName = nameParser.parse(pointFtr)
-            linePoints.setdefault(pointName,[]).append(pointFtr.location)
+            linePoints.setdefault(pointName,[]).append(pointFtr['geometry']['coordinates'])
 
         for name,pts in linePoints.items():
             linePts = getPhaseLine(pts)
